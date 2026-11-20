@@ -10,7 +10,7 @@ import openapi from "./docs/openapi.js";
 const app = express();
 
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapi));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapi));    
 
 app.use(
     morgan("tiny", {
