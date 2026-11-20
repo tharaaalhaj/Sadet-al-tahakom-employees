@@ -1,4 +1,4 @@
-# Sada Al-Tahakom Employees: Attendance API
+# Sadet Al-Tahakom Employees: Attendance API
 
 A REST API for an employee check-in / check-out system. An ESP-based card reader sends the employee's card code (`par_code`) to the server whenever a card is scanned. The server records the time, calculates the hours worked, and alerts the manager by email if an employee leaves before completing 6 hours.
 
@@ -17,15 +17,15 @@ A REST API for an employee check-in / check-out system. An ESP-based card reader
 
 ## Tech Stack
 
-| Area | Tools |
-|---|---|
-| Runtime / Framework | Node.js, Express |
-| Database | PostgreSQL (`pg`, raw SQL) |
-| Validation | Zod |
-| Logging | Winston, Morgan |
-| Email | Nodemailer (Gmail) |
-| Testing | Jest, Supertest |
-| Docs | Swagger UI (OpenAPI 3) |
+| Area                | Tools                      |
+| ------------------- | -------------------------- |
+| Runtime / Framework | Node.js, Express           |
+| Database            | PostgreSQL (`pg`, raw SQL) |
+| Validation          | Zod                        |
+| Logging             | Winston, Morgan            |
+| Email               | Nodemailer (Gmail)         |
+| Testing             | Jest, Supertest            |
+| Docs                | Swagger UI (OpenAPI 3)     |
 
 ## API Endpoints
 
@@ -33,19 +33,19 @@ Interactive documentation is available at **`/api-docs`** once the server is run
 
 ![Swagger UI](docs/images/swagger.png)
 
-| Method | Endpoint | Body | Description |
-|---|---|---|---|
-| PATCH | `/user/checkIn` | `{ "par_code": "1234" }` | Register check-in |
-| PATCH | `/user/signup` | `{ "par_code": "1234" }` | Register check-out and calculate hours |
+| Method | Endpoint        | Body                     | Description                            |
+| ------ | --------------- | ------------------------ | -------------------------------------- |
+| PATCH  | `/user/checkIn` | `{ "par_code": "1234" }` | Register check-in                      |
+| PATCH  | `/user/signup`  | `{ "par_code": "1234" }` | Register check-out and calculate hours |
 
 ### Responses
 
-| Status | Meaning |
-|---|---|
-| 200 | Success |
-| 400 | Invalid `par_code`, or employee has no check-in |
-| 404 | `par_code` not found |
-| 500 | Unexpected server error |
+| Status | Meaning                                         |
+| ------ | ----------------------------------------------- |
+| 200    | Success                                         |
+| 400    | Invalid `par_code`, or employee has no check-in |
+| 404    | `par_code` not found                            |
+| 500    | Unexpected server error                         |
 
 **Check-out success example**
 
@@ -84,14 +84,14 @@ flowchart LR
     S -. errors .-> E
 ```
 
-| Layer | Responsibility |
-|---|---|
-| `routes/` | URL definitions only |
-| `Middleware/` | Request validation and the global error handler |
-| `controllers/` | Read the request, call the service, send the response |
-| `services/` | Business rules (hours calculation, status, email decision) |
-| `repositories/` | SQL queries only |
-| `utils/` | Logger and the `AppError` class |
+| Layer           | Responsibility                                             |
+| --------------- | ---------------------------------------------------------- |
+| `routes/`       | URL definitions only                                       |
+| `Middleware/`   | Request validation and the global error handler            |
+| `controllers/`  | Read the request, call the service, send the response      |
+| `services/`     | Business rules (hours calculation, status, email decision) |
+| `repositories/` | SQL queries only                                           |
+| `utils/`        | Logger and the `AppError` class                            |
 
 ### Check-out flow
 
