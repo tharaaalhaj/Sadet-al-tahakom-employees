@@ -2,7 +2,7 @@
 const openapi = {
     openapi : "3.0.0",
     info : {
-        title : "sada-al-tahakom-employees" ,
+        title : "sadet-al-tahakom-employees" ,
         version : "1.0.0"
     },
     paths: {
